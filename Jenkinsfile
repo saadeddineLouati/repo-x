@@ -3,7 +3,10 @@ pipeline{
     stages{
         stage("build"){
             steps{
-               echo("Build stage by saaad 2-2") 
+               echo("Build stage by saaad 2-2")
+               nodejs("NodeJs 16.9.1"){
+                   sh "yarn install"
+               }
             }
         }
         stage("test"){
