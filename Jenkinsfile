@@ -1,3 +1,5 @@
+def groovyScript
+
 pipeline{
     agent any
     environment{
@@ -12,6 +14,13 @@ pipeline{
         booleanParam(name:"excuteTests", defaultValue: true, description:"")
     }
     stages{
+         stage("init") {
+            steps {
+                script {
+                   groovyScript = load "script.groovy" 
+                }
+            }
+        }
         stage("build"){
             steps{
                echo("Build stage by saaad 2-2")
@@ -32,17 +41,20 @@ pipeline{
         }
         stage("deploy"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'test-pipeline-user-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                // withCredentials([usernamePassword(credentialsId: 'test-pipeline-user-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 // available as an env variable, but will be masked if you try to print it out any which way
                 // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
-                sh 'echo $PASSWORD'
+                // sh 'echo $PASSWORD'
                 // also available as a Groovy variable
-                echo USERNAME
+                // echo USERNAME
                 // or inside double quotes for string interpolation
-                echo "username is $USERNAME"
+                // echo "username is $USERNAME"
+                // }
+                // echo("deploy stage by saaad")
+                // echo("deploying version ${BUILD_VERSION}")
+                script {
+                    groovyScript.deployApp()
                 }
-                echo("deploy stage by saaad")
-                echo("deploying version ${BUILD_VERSION}") 
             }
         }
     }
