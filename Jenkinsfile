@@ -10,8 +10,13 @@ pipeline{
             }
         }
         stage("test"){
+            when{
+                expression{
+                    BRANCH_NAME =='dev'
+                }
+            }
             steps{
-               echo("test stage by saaad") 
+               echo("test stage by saaad")
             }
         }
         stage("deploy"){
