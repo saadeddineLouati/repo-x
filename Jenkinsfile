@@ -26,7 +26,7 @@ pipeline{
         stage("deploy"){
             steps{
                 withCredentials([
-                    usernamePassword(credentials: "test-pipeline-user-id", usernameVariable:USER, passwordVariable: PWD)
+                    usernamePassword(credentials: "test-pipeline-user-id", usernameVariable: USER, passwordVariable: PWD)
                 ])
                echo("version: ${VERSION}")
                echo("USER: ${USER}")
