@@ -4,12 +4,16 @@ pipeline{
         VERSION = "0.0.6"
         SERVER_CREDENTIALS = credentials("test-pipeline-user-id")
     }
+    tools{
+        nodejs 'NodeJs 16.9.1'
+    }
     stages{
         stage("build"){
             steps{
                echo("Build stage by saaad 2-2")
                nodejs("NodeJs 16.9.1"){
                    sh "yarn install"
+                   sh "npm start"
                }
             }
         }
@@ -41,6 +45,7 @@ pipeline{
     post{
         success{
             echo("Success message")
+            npm start
         }
         failure{
             echo("Failure message")
