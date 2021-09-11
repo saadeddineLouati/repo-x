@@ -23,7 +23,7 @@ pipeline{
                echo("test stage by saaad")
             }
         }
-        stage("deploy")
+        stage("deploy"){
                echo("version: ${VERSION}")
                echo("SERVER_CREDENTIALS: ${SERVER_CREDENTIALS}")
                echo("deploy stage by saaad") 
