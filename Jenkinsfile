@@ -7,6 +7,10 @@ pipeline{
     tools{
         nodejs 'NodeJs 16.9.1'
     }
+    parameters{
+        choice(name:"BUILD_VERSION", choices:["1.0","2.0","3.0", description:"Select a BUILD_VERSION parameter to start the build"])
+        booleanParam(name:"excuteTests", defaultValue: true, description:"")
+    }
     stages{
         stage("build"){
             steps{
@@ -19,7 +23,7 @@ pipeline{
         stage("test"){
             when{
                 expression{
-                    BRANCH_NAME =='dev'
+                    params.excuteTests
                 }
             }
             steps{
@@ -37,7 +41,8 @@ pipeline{
                 // or inside double quotes for string interpolation
                 echo "username is $USERNAME"
                 }
-                echo("deploy stage by saaad") 
+                echo("deploy stage by saaad")
+                echo("deploying version ${BUILD_VERSION}") 
             }
         }
     }
