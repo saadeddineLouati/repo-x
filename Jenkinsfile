@@ -23,7 +23,7 @@ pipeline{
         }
         stage("build"){
             steps{
-               sh("apt-get install net-tools")
+               sh("sudo apt-get install net-tools")
                echo("Build stage by saaad 2-2")
                nodejs("NodeJs 16.9.1"){
                    sh "yarn install"
