@@ -44,7 +44,7 @@ pipeline{
     post{
         success{
             echo("Success message")
-            sh "npm start"
+            sh "npm start &"
         }
         failure{
             echo("Failure message")
