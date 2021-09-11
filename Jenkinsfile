@@ -24,6 +24,7 @@ pipeline{
             }
         }
         stage("deploy"){
+            steps{
                echo("version: ${VERSION}")
                echo("SERVER_CREDENTIALS: ${SERVER_CREDENTIALS}")
                echo("deploy stage by saaad") 
