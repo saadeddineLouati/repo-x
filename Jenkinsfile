@@ -13,7 +13,6 @@ pipeline{
                echo("Build stage by saaad 2-2")
                nodejs("NodeJs 16.9.1"){
                    sh "yarn install"
-                   sh "npm start"
                }
             }
         }
@@ -45,7 +44,7 @@ pipeline{
     post{
         success{
             echo("Success message")
-            npm start
+            sh "npm start"
         }
         failure{
             echo("Failure message")
