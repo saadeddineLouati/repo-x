@@ -8,7 +8,7 @@ pipeline{
         nodejs 'NodeJs 16.9.1'
     }
     parameters{
-        choice(name:'BUILD_VERSION', choices: ['1.0','2.0','3.0'], description:"Select a BUILD_VERSION parameter to start the build"])
+        choice(name:'BUILD_VERSION', choices: ['1.0','2.0','3.0'], description:"Select a BUILD_VERSION parameter to start the build")
         booleanParam(name:"excuteTests", defaultValue: true, description:"")
     }
     stages{
