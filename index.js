@@ -10,6 +10,6 @@ app.post("/", (req, res) => {
     res.send("This is home page with post request.");
 });
 
-app.listen(5000, () => {
+app.listen(2000, () => {
     console.log("Server has started!")
 })
