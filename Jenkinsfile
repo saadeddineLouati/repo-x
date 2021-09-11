@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    environment{
+        VERSION = "0.0.6"
+        SERVER_CREDENTIALS = credentials("test-pipeline-user-id")
+    }
     stages{
         stage("build"){
             steps{
@@ -19,8 +23,9 @@ pipeline{
                echo("test stage by saaad")
             }
         }
-        stage("deploy"){
-            steps{
+        stage("deploy")
+               echo("version: ${VERSION}")
+               echo("SERVER_CREDENTIALS: ${SERVER_CREDENTIALS}")
                echo("deploy stage by saaad") 
             }
         }
