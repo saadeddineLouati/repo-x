@@ -1,3 +1,6 @@
+def dockerHome
+def mavenHome
+
 pipeline {
     environment {
     registry = "saadeddinelouati/repo-x"
@@ -12,10 +15,9 @@ pipeline {
             //     git 'https://github.com/saadeddineLouati/repo-x.git'
             //     }
             // }
-            stage('Initialize')
-            {
-                def dockerHome = tool 'docker'
-                def mavenHome  = tool 'maven'
+            stage('Initialize'){
+                dockerHome = tool 'docker'
+                mavenHome  = tool 'maven'
                 env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
             }
 
