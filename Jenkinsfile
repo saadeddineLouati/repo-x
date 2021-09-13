@@ -16,10 +16,6 @@ pipeline {
             stage('Building Docker Image') {
                 steps {
                     sh("docker ps")
-                //     script {
-                //         dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                //     }
-                // }
             }
 
             stage('Deploying Docker Image to Dockerhub') {
