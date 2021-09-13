@@ -4,9 +4,6 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
     }
-    tools{
-        dockerTool 'docker'
-    }
 
     agent any
     stages {
@@ -18,8 +15,9 @@ pipeline {
 
             stage('Building Docker Image') {
                 steps {
+                    sh("docker ps")
                     script {
-                        dockerImage = dockerTool.build registry + ":$BUILD_NUMBER"
+                        // dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     }
                 }
             }
@@ -27,7 +25,7 @@ pipeline {
             stage('Deploying Docker Image to Dockerhub') {
                 steps {
                     script {
-                        dockerTool.withRegistry('', registryCredential) {
+                        docker.withRegistry('', registryCredential) {
                         dockerImage.push()
                         }
                     }
