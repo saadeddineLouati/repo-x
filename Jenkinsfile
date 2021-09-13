@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
     }
     tools{
-        docker 'docker'
+        docker 'dockerTool'
     }
 
     agent any
