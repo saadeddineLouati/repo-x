@@ -12,6 +12,12 @@ pipeline {
             //     git 'https://github.com/saadeddineLouati/repo-x.git'
             //     }
             // }
+            stage('Initialize')
+            {
+                def dockerHome = tool 'docker'
+                def mavenHome  = tool 'maven'
+                env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+            }
 
             stage('Building Docker Image') {
                 steps {
