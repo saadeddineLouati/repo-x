@@ -7,11 +7,11 @@ pipeline {
 
     agent any
     stages {
-            stage('Cloning our Git') {
-                steps {
-                git 'https://github.com/saadeddineLouati/repo-x.git'
-                }
-            }
+            // stage('Cloning our Git') {
+            //     steps {
+            //     git 'https://github.com/saadeddineLouati/repo-x.git'
+            //     }
+            // }
 
             stage('Building Docker Image') {
                 steps {
